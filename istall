@@ -1,0 +1,3 @@
+pip install mouse
+pip install Pillow pyscreenshot
+pip install pyautogui
