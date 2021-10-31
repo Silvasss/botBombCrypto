@@ -20,13 +20,15 @@ def mouseLeftClick():
 
 # Configurado só para funcionar na tela "Character".
 def mouseDragCharacter():
-    # Recebe a posição do cursor do mouse.
+    # Recebe a posição do cursor do mouse que está no "work".
     x, y = pyautogui.position()
 
     pyautogui.click()
 
-    # Movimento do scroll para baixo.
-    pyautogui.scroll(-7000)
+    # Movimento de puxar para baixo.
+    pyautogui.dragRel(0, -y, 1)
+
+    moveMouse(x, y)
 
     # Tempo para terminar a animação
     time.sleep(2)
@@ -38,6 +40,42 @@ def mouseDragCharacter():
 
     # Posiciona o mouse em "Work".
     pyautogui.moveTo(x + 230, y, 2)
+
+    return True
+
+
+# Configurado só para funcionar na tela "Character".
+def mouseDragUpCharacterHouse():
+
+    time.sleep(2)
+
+    # Recebe a posição do cursor do mouse.
+    x, y = 847, 437
+
+    n = 0
+    while n < 2:
+        # Posiciona o mouse no primeiro.
+        moveMouse(x, y)
+
+        # Clica para libera o movimento.
+        mouseLeftClick()
+
+        # Movimento de puxar para baixo.
+        pyautogui.dragRel(0, 350, 2)
+
+        n += 1
+
+    # Posiciona o mouse no primeiro.
+    moveMouse(x, y)
+
+    # Posiciona o mouse em "House".
+    pyautogui.moveTo(x + 160, y, 2)
+
+    for i in range(4):
+        # Clica em "House".
+        mouseLeftClick()
+
+        time.sleep(2)
 
     return True
 
@@ -54,5 +92,7 @@ def mouseRepeatClick(number):
 
     return True
 
+
 #time.sleep(2)
 #mouseDragCharacter()
+#mouseDragUpCharacterHouse()

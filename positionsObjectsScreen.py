@@ -39,13 +39,14 @@ def positionButtonHunt():
     return positionHunt[0]
 
 
+# ---------------------------------------Função desativada-------------------------------------
 # Tela personagens
 def positionTipoBoneco():
     # Retorna a última posição onde está escrito "common".
     positionTextCommon = findClickPositions('images/tipoboneco.jpg', 'screenShot.jpg', debug_mode='points')
-
+    #positionTextCommon = findClickPositions('images/raro.jpg', 'screenShot.jpg', threshold=0.8, debug_mode='points')
     return positionTextCommon[-1]
-
+# ----------------------------------------------------------------------------------------------
 
 # Tela personagens
 def positionButtonClose():
@@ -90,3 +91,46 @@ def positionConfirmSign():
     positionSign = findClickPositions('images/signLogin.jpg', 'screenShot.jpg', debug_mode='points')
 
     return positionSign[0]
+
+
+# Tela personagens
+def positionButtonWork():
+    # Retorna a última posição onde está escrito "Work".
+    positionWork = findClickPositions('images/work.jpg', 'screenShot.jpg', threshold=0.8, debug_mode='points')
+
+    return positionWork[-1]
+
+
+def positionTipoBonecoSuperRaroLegend():
+    try:
+        positionSuperRaro = findClickPositions('images/superaro.jpg', 'screenShot.jpg', threshold=0.8, debug_mode='points')
+
+        return positionSuperRaro[-1]
+    except IndexError:
+        positionLegend = findClickPositions('images/legend.jpg', 'screenShot.jpg', threshold=0.8, debug_mode='points')
+
+        return positionLegend[-1]
+    else:
+        return False
+
+
+    """
+    try:
+        positionSuperRaro = findClickPositions('images/superaro.jpg', 'screenShot.jpg', threshold=0.8,
+                                               debug_mode='points')
+
+        positionLegend = findClickPositions('images/legend.jpg', 'screenShot.jpg', threshold=0.8, debug_mode='points')
+
+        positionSuperRaro.append(positionLegend[-1])
+
+        return positionSuperRaro
+    except IndexError:
+        positionLegend = findClickPositions('images/legend.jpg', 'screenShot.jpg', threshold=0.8, debug_mode='points')
+
+        return positionLegend[-1]
+    else:
+        positionSuperRaro = findClickPositions('images/superaro.jpg', 'screenShot.jpg', threshold=0.8,
+                                               debug_mode='points')
+
+        return positionSuperRaro
+    """
