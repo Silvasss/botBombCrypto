@@ -40,12 +40,13 @@ def positionButtonHunt():
 
 
 # ---------------------------------------Função desativada-------------------------------------
+"""
 # Tela personagens
 def positionTipoBoneco():
     # Retorna a última posição onde está escrito "common".
     positionTextCommon = findClickPositions('images/tipoboneco.jpg', 'screenShot.jpg', debug_mode='points')
-    #positionTextCommon = findClickPositions('images/raro.jpg', 'screenShot.jpg', threshold=0.8, debug_mode='points')
-    return positionTextCommon[-1]
+    return positionTextCommon[-1] 
+"""
 # ----------------------------------------------------------------------------------------------
 
 # Tela personagens
@@ -101,20 +102,8 @@ def positionButtonWork():
     return positionWork[-1]
 
 
+# Tela personagens
 def positionTipoBonecoSuperRaroLegend():
-    try:
-        positionSuperRaro = findClickPositions('images/superaro.jpg', 'screenShot.jpg', threshold=0.8, debug_mode='points')
-
-        return positionSuperRaro[-1]
-    except IndexError:
-        positionLegend = findClickPositions('images/legend.jpg', 'screenShot.jpg', threshold=0.8, debug_mode='points')
-
-        return positionLegend[-1]
-    else:
-        return False
-
-
-    """
     try:
         positionSuperRaro = findClickPositions('images/superaro.jpg', 'screenShot.jpg', threshold=0.8,
                                                debug_mode='points')
@@ -125,12 +114,19 @@ def positionTipoBonecoSuperRaroLegend():
 
         return positionSuperRaro
     except IndexError:
-        positionLegend = findClickPositions('images/legend.jpg', 'screenShot.jpg', threshold=0.8, debug_mode='points')
+        try:
+            positionLegend = findClickPositions('images/legend.jpg', 'screenShot.jpg', threshold=0.8, debug_mode='points')
 
-        return positionLegend[-1]
-    else:
-        positionSuperRaro = findClickPositions('images/superaro.jpg', 'screenShot.jpg', threshold=0.8,
-                                               debug_mode='points')
+            return positionLegend[-1]
+        except IndexError:
+            positionSuperRaro = findClickPositions('images/superaro.jpg', 'screenShot.jpg', threshold=0.8, debug_mode='points')
 
-        return positionSuperRaro
-    """
+            return positionSuperRaro[-1]
+
+
+# Qualquer tela.
+def positionErroOverloaded():
+    # Retorna a posição da palavra "Unknown".
+    positionErro = findClickPositions('images/overloaded.jpg', 'screenShot.jpg', debug_mode='points')
+
+    return positionErro[0]

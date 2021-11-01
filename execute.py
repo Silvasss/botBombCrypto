@@ -1,3 +1,5 @@
+import pyautogui
+
 from positionsObjectsScreen import sleepingQuantity
 import positionsObjectsScreen as objectsScreen
 import clickScreen as click
@@ -28,7 +30,7 @@ def execMain():
                 click.mouseLeftClick()
 
                 return True
-            except:
+            finally:
                 return False
 
         # Manipulação da tela home
@@ -48,7 +50,7 @@ def execMain():
                 click.mouseLeftClick()
 
                 return True
-            except:
+            finally:
                 return False
 
         # Função que volta para a tela round
@@ -78,7 +80,7 @@ def execMain():
                 click.mouseLeftClick()
 
                 return True
-            except:
+            finally:
                 pass
 
         # Manipulação da tela dos personagens
@@ -106,7 +108,7 @@ def execMain():
                     return True
                 else:
                     return False
-            except:
+            finally:
                 return False
 
         # Caso ele tente chama uma vez a função, e de erro e executada novamente.
@@ -131,6 +133,7 @@ def execMain():
         pass
 
 
+# Função para mudar de mapa.
 def screenRoundNewMap():
     try:
         time.sleep(2)
@@ -147,24 +150,13 @@ def screenRoundNewMap():
         click.mouseLeftClick()
 
         return True
-    except:
+    finally:
         pass
 
 
-def screenErroUnknown():
-    printScreem()
-
-    # Verifica se existe a palavra "Unknown" na tela.
-    if objectsScreen.positionErroUnknown():
-        # Posição da palavra "Ok".
-        x, y = objectsScreen.positionOkErro()
-
-        # Move o mouse para o botão "Ok".
-        click.moveMouse(x, y)
-
-        # Clica no botão
-        click.mouseLeftClick()
-
+# Função que faz o login e vai para tela "round".
+def loginFunction():
+    try:
         # Tempo para retorna a página inicial.
         time.sleep(30)
 
@@ -180,7 +172,7 @@ def screenErroUnknown():
         click.mouseLeftClick()
 
         # Tempo para carregar
-        time.sleep(30)
+        time.sleep(5)
 
         printScreem()
 
@@ -194,7 +186,7 @@ def screenErroUnknown():
         click.mouseLeftClick()
 
         # Tempo para carregar
-        time.sleep(30)
+        time.sleep(5)
 
         printScreem()
 
@@ -208,19 +200,58 @@ def screenErroUnknown():
         click.mouseLeftClick()
 
         # Tempo para carregar
-        time.sleep(60)
+        time.sleep(30)
 
         printScreem()
 
         # Posição do botão "Treasure Hunt", na tela inicial.
         x, y = objectsScreen.positionButtonHunt()
-        #print("Posição do botão incial: {}, {}".format(x, y))
+        # print("Posição do botão incial: {}, {}".format(x, y))
 
         # Move o mouse para a posição do botão "Treasure Hunt", na tela inicial.
         click.moveMouse(x, y)
 
         # Clicar no botão "Treasure Hunt", na tela inicial.
         click.mouseLeftClick()
+    finally:
+        print("Função login: False")
+
+        pass
+
+
+# Função que verifica se existe o erro "Unknown", na tela round.
+def screenErroUnknown():
+    printScreem()
+
+    # Verifica se existe a palavra "Unknown" na tela.
+    if objectsScreen.positionErroUnknown():
+        # Posição da palavra "Ok".
+        x, y = objectsScreen.positionOkErro()
+
+        # Move o mouse para o botão "Ok".
+        click.moveMouse(x, y)
+
+        # Clica no botão
+        click.mouseLeftClick()
+
+        # Função que faz o login.
+        loginFunction()
+
+        return True
+    else:
+        pass
+
+
+def screenErroOverloaded():
+    printScreem()
+
+    # Verifica se existe a palavra "Overloaded" na tela.
+    if objectsScreen.positionErroOverloaded():
+        # Simula a tecla "F5".
+        pyautogui.press("f5")
+
+        # Função que faz o login.
+        loginFunction()
 
         return True
     else:

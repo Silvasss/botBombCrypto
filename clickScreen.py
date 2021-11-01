@@ -91,8 +91,3 @@ def mouseRepeatClick(number):
         n +=1
 
     return True
-
-
-#time.sleep(2)
-#mouseDragCharacter()
-#mouseDragUpCharacterHouse()

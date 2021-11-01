@@ -5,21 +5,21 @@ from datetime import datetime, timedelta
 import time
 
 
-# Executar o sript na tela do round.
-def main(homeCasa):
+# Executar o script na tela do round.
+def main(home, minutosBonecos, minutosCasaBonecos, timeSleep):
 
     def verifyTimeFuture():
-        casa = homeCasa
+        casa = home
 
-        # Calculo da hora atual mais 60 minutos.
+        # Calculo da hora atual mais os minutos que a função recebe.
         # Tempo que o código vai esperar carregar a energia dos bonecos para chamar o próximo passo.
-        timeFuture = datetime.now() + timedelta(minutes=60)
+        timeFuture = datetime.now() + timedelta(minutes=minutosBonecos)
         # Formatando o hora futura
         future_time = timeFuture.strftime('%H:%M')
 
-        # Calculo da hora atual mais 20 minutos.
+        # Calculo da hora atual mais os minutos que a função recebe.
         # Tempo que o código vai esperar os bonecos "SuperRaros" e "Legend" cansarem, para mandar eles para casa.
-        timeFutureRaroLegend = datetime.now() + timedelta(minutes=20)
+        timeFutureRaroLegend = datetime.now() + timedelta(minutes=minutosCasaBonecos)
         # Formatando o hora futura dos raros e lendas.
         futureRaroLegend_time = timeFuture.strftime('%H:%M')
 
@@ -49,11 +49,15 @@ def main(homeCasa):
 
                     # Verifica se deu erro o "Unknown".
                     execute.screenErroUnknown()
-                except:
+
+                    # Verifica se deu erro o "Overloaded".
+                    execute.screenErroOverloaded()
+                finally:
                     pass
 
-                print("Pausa de 3 minuto: {}".format(datetime.now().strftime('%H:%M:%S')))
-                time.sleep(180)
+                print("Pausa de {} minuto: {}".format(int(timeSleep/60), datetime.now().strftime('%H:%M:%S')))
+
+                time.sleep(timeSleep)
 
                 # Move o mouse, não AFK.
                 x, y = pyautogui.position()
@@ -63,19 +67,3 @@ def main(homeCasa):
 
     while True:
         print("Ciclo completo: {}".format(verifyTimeFuture()))
-
-
-if __name__ == "__main__":
-    # Ativar função "Home".
-    home = False
-    executeSuperRaroLegend.screenCharacterSuperRaroLegend()
-    #main(home)
-
-    # Toda vez que ocorrer um erro, fecha e abrir novamente o jogo em uma nova aba.
-
-
-"""
-exec()
-print("Pausa de 1 minuto: {}".format(datetime.now().strftime('%H:%M:%S')))
-time.sleep(1)
-"""

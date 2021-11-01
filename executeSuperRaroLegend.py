@@ -1,6 +1,5 @@
 import pyautogui
 
-import positionsObjectsScreen
 import positionsObjectsScreen as objectsScreen
 import clickScreen as click
 from printScreen import printScreem
@@ -26,7 +25,7 @@ def screenRound():
         click.mouseLeftClick()
 
         return True
-    except:
+    finally:
         return False
 
 
@@ -49,7 +48,7 @@ def screenHome():
         click.mouseLeftClick()
 
         return True
-    except:
+    finally:
         return False
 
 
@@ -80,47 +79,108 @@ def backScreenRound():
         click.mouseLeftClick()
 
         return True
-    except:
+    finally:
         pass
 
 
 # Manipulação da tela dos personagens
 def screenCharacterVersion2():
     try:
-        time.sleep(2)
-
-        printScreem()
-
-        x, y = positionsObjectsScreen.positionButtonWork()
-
-        #click.moveMouse(x - 240, y + 15)
-        click.moveMouse(x + 30, y)
-        # Puxa para baixo
-        click.mouseDragCharacter()
+        # Utilizado no for.
+        n = 0
 
         time.sleep(2)
 
         printScreem()
+
+        # Lista que armazena a posição dos bonecos "SuperRaro" e "Legend".
+        listaBonecosEspeciais = []
 
         if objectsScreen.positionTipoBonecoSuperRaroLegend():
-            # Posição da palavra "SuperRaro" ou "Legend".
-            tipoX, tipoY = objectsScreen.positionTipoBonecoSuperRaroLegend()
+            # Posição das palavras "SuperRaro" ou "Legend".
+            listaBonecosEspeciais.append(objectsScreen.positionTipoBonecoSuperRaroLegend())
+
+            # Pegando só a primeira lista
+            listaBonecosEspeciais = listaBonecosEspeciais[0]
+
+            # Retirando o terceiro item.
+            listaBonecosEspeciais.pop(2)
 
             print("Encontrou ------------ SuperRaro ou Legend")
         else:
             print("Não encontrou ------------ SuperRaro ou Legend")
             return False
 
-        # Move o mouse para o nome do tipo do boneco.
-        click.moveMouse(tipoX, tipoY)
+        # Que percorre a lista que contém as posições dos bonecos.
+        for i in listaBonecosEspeciais:
+            if i:
+                # Posição da palavra "SuperRaro" ou "Legend".
+                tipoX, tipoY = i[0], i[1]
 
-        pyautogui.moveTo(tipoX + 230, tipoY)
+                # Move o mouse para o nome do tipo do boneco.
+                click.moveMouse(tipoX, tipoY)
 
-        for i in range(4):
-            # Clica no botão "work".
-            click.mouseLeftClick()
+                pyautogui.moveTo(tipoX + 230, tipoY)
 
-            time.sleep(2)
+                # Clica no botão "work".
+                click.mouseLeftClick()
+
+                time.sleep(2)
+
+                n += 1
+
+            if n > 1:
+                printScreem()
+
+                # Zera as posições da lista.
+                listaBonecosEspeciais = []
+
+                # Adicionado as posições dos bonecos.
+                listaBonecosEspeciais.append(objectsScreen.positionTipoBonecoSuperRaroLegend())
+
+                # Posição da palavra "SuperRaro" ou "Legend".
+                tipoX, tipoY = listaBonecosEspeciais[0][-1]
+
+                # Move o mouse para o nome do tipo do boneco.
+                click.moveMouse(tipoX, tipoY)
+
+                # Move o mouse para o botão "Work".
+                pyautogui.moveTo(tipoX + 230, tipoY)
+
+                # Clica no botão "work".
+                click.mouseLeftClick()
+
+                time.sleep(2)
+
+                n += 1
+
+                # Recebe a posição do cursor do mouse.
+                x, y = pyautogui.position()
+
+                # Move o curso para o lado do botão "Work".
+                click.moveMouse(x - 100, y)
+
+                # Movimento de arrastar para baixo.
+                pyautogui.dragRel(0, -y, 1)
+
+                time.sleep(2)
+
+                printScreem()
+
+                # Adicionado as posições dos bonecos.
+                listaBonecosEspeciais = objectsScreen.positionTipoBonecoSuperRaroLegend()
+
+                # Posição da palavra "SuperRaro" ou "Legend".
+                tipoX, tipoY = listaBonecosEspeciais
+
+                # Move o mouse para o nome do tipo do boneco.
+                click.moveMouse(tipoX, tipoY)
+
+                # Move o curso.
+                pyautogui.moveTo(tipoX + 230, tipoY)
+
+                # Clica no botão "work".
+                click.mouseLeftClick()
 
         # Manda o boneco para "House".
         click.mouseDragUpCharacterHouse()
@@ -131,7 +191,7 @@ def screenCharacterVersion2():
         else:
             print("Falha na função: backScreenRound")
             return False
-    except:
+    finally:
         return False
 
 
