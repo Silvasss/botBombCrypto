@@ -30,7 +30,7 @@ def execMain():
                 click.mouseLeftClick()
 
                 return True
-            finally:
+            except:
                 return False
 
         # Manipulação da tela home
@@ -50,7 +50,7 @@ def execMain():
                 click.mouseLeftClick()
 
                 return True
-            finally:
+            except:
                 return False
 
         # Função que volta para a tela round
@@ -80,7 +80,7 @@ def execMain():
                 click.mouseLeftClick()
 
                 return True
-            finally:
+            except:
                 pass
 
         # Manipulação da tela dos personagens
@@ -108,7 +108,7 @@ def execMain():
                     return True
                 else:
                     return False
-            finally:
+            except:
                 return False
 
         # Caso ele tente chama uma vez a função, e de erro e executada novamente.
@@ -150,7 +150,7 @@ def screenRoundNewMap():
         click.mouseLeftClick()
 
         return True
-    finally:
+    except:
         pass
 
 
@@ -213,7 +213,7 @@ def loginFunction():
 
         # Clicar no botão "Treasure Hunt", na tela inicial.
         click.mouseLeftClick()
-    finally:
+    except:
         print("Função login: False")
 
         pass

@@ -52,7 +52,7 @@ def main(home, minutosBonecos, minutosCasaBonecos, timeSleep):
 
                     # Verifica se deu erro o "Overloaded".
                     execute.screenErroOverloaded()
-                finally:
+                except:
                     pass
 
                 print("Pausa de {} minuto: {}".format(int(timeSleep/60), datetime.now().strftime('%H:%M:%S')))

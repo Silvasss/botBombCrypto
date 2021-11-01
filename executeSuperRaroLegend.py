@@ -25,7 +25,7 @@ def screenRound():
         click.mouseLeftClick()
 
         return True
-    finally:
+    except:
         return False
 
 
@@ -48,7 +48,7 @@ def screenHome():
         click.mouseLeftClick()
 
         return True
-    finally:
+    except:
         return False
 
 
@@ -79,7 +79,7 @@ def backScreenRound():
         click.mouseLeftClick()
 
         return True
-    finally:
+    except:
         pass
 
 
@@ -191,7 +191,7 @@ def screenCharacterVersion2():
         else:
             print("Falha na função: backScreenRound")
             return False
-    finally:
+    except:
         return False
 
 
