@@ -10,7 +10,7 @@ import time
 # "screenCharacterSuperRaroLegend()".
 
 
-# Manipulação da tela round
+# Manipulação da tela round.
 def screenRound():
     try:
         printScreem()
@@ -201,15 +201,12 @@ def screenCharacterSuperRaroLegend():
         if screenRound() and screenHome():
             print("ScreenRound e ScreenHome: True")
 
-            # Quantidade de personagens que tem que ir para casa.
-            for i in range(1):
-                print("Entro no FOR: {}".format(i))
-                time.sleep(3)
-                if screenCharacterVersion2():
-                    print("ScreenCharacterVersion2: True")
-                else:
-                    print("ScreenCharacterVersion2: False")
+            if screenCharacterVersion2():
+                print("ScreenCharacterVersion2: True")
+            else:
+                print("ScreenCharacterVersion2: False")
+                exit()
         else:
-            return False
+            exit()
 
     validacaoFuncoes()

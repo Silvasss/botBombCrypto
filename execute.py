@@ -116,17 +116,18 @@ def execMain():
             if screenRound():
                 print("screen round: True")
             else:
-                print("Tentando executar novamente a função ScreenRound: {}".format(screenRound()))
-
+                print("Função ScreenRound: False")
+                exit()
             if screenHome():
                 print("ScreenHome: True")
             else:
-                print("Tentando executar novamente a função ScreenHome: {}".format(screenHome()))
-
+                print("Função ScreenHome: False")
+                exit()
             if screenCharacter():
                 print("ScreenCharacter: True")
             else:
-                print("Tentando executar novamente a função ScreenCharacter: {}".format(screenRound()))
+                print("Função ScreenCharacter: False")
+                exit()
 
         validacaoFuncoes()
     else:
@@ -151,6 +152,25 @@ def screenRoundNewMap():
 
         return True
     except:
+        pass
+
+
+# Tela login.
+def screenErroCore():
+    printScreem()
+
+    # Verifica se existe a palavra "Failed" na tela.
+    if objectsScreen.positionErroCore():
+        # Simula a tecla "F5".
+        pyautogui.press("f5")
+
+        time.sleep(60)
+
+        # Função que faz o login.
+        loginFunction()
+
+        return True
+    else:
         pass
 
 
@@ -200,7 +220,7 @@ def loginFunction():
         click.mouseLeftClick()
 
         # Tempo para carregar
-        time.sleep(30)
+        time.sleep(80)
 
         printScreem()
 
@@ -214,8 +234,11 @@ def loginFunction():
         # Clicar no botão "Treasure Hunt", na tela inicial.
         click.mouseLeftClick()
     except:
-        print("Função login: False")
+        #try:
+            #screenErroCore()
 
+            #return True
+        #except:
         pass
 
 
@@ -256,3 +279,61 @@ def screenErroOverloaded():
         return True
     else:
         pass
+
+
+# Função que faz o login quando ocorre algum erro e o jogo fica parado na tela de login.
+def loginFunction2():
+
+    printScreem()
+
+    # Posição da frase "Connect Wallet".
+    x, y = objectsScreen.positionConnectWallet()
+
+    # Move o mouse para a frase "Connect Wallet".
+    click.moveMouse(x, y)
+
+    # Clica no botão
+    click.mouseLeftClick()
+
+    # Tempo para carregar
+    time.sleep(5)
+
+    printScreem()
+
+    # Posição da palavra "MetaMask".
+    x, y = objectsScreen.positionSelectWallet()
+
+    # Move o mouse para a palavra "MetaMask".
+    click.moveMouse(x, y)
+
+    # Clica no botão
+    click.mouseLeftClick()
+
+    # Tempo para carregar
+    time.sleep(5)
+
+    printScreem()
+
+    # Posição da palavra "Sign".
+    x, y = objectsScreen.positionConfirmSign()
+
+    # Move o mouse para a palavra "Sign".
+    click.moveMouse(x, y)
+
+    # Clica no botão
+    click.mouseLeftClick()
+
+    # Tempo para carregar
+    time.sleep(80)
+
+    printScreem()
+
+    # Posição do botão "Treasure Hunt", na tela inicial.
+    x, y = objectsScreen.positionButtonHunt()
+    # print("Posição do botão incial: {}, {}".format(x, y))
+
+    # Move o mouse para a posição do botão "Treasure Hunt", na tela inicial.
+    click.moveMouse(x, y)
+
+    # Clicar no botão "Treasure Hunt", na tela inicial.
+    click.mouseLeftClick()

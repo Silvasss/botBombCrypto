@@ -105,23 +105,21 @@ def positionButtonWork():
 # Tela personagens
 def positionTipoBonecoSuperRaroLegend():
     try:
-        positionSuperRaro = findClickPositions('images/superaro.jpg', 'screenShot.jpg', threshold=0.8,
+        positionSuperRaro = findClickPositions('images/superaro.jpg', 'images/telaPersonagensPrimeiraParte.jpg', threshold=0.8,
                                                debug_mode='points')
 
-        positionLegend = findClickPositions('images/legend.jpg', 'screenShot.jpg', threshold=0.8, debug_mode='points')
+        positionLegend = findClickPositions('images/legend.jpg', 'images/telaPersonagensPrimeiraParte.jpg', threshold=0.8, debug_mode='points')
 
-        positionSuperRaro.append(positionLegend[-1])
-
-        return positionSuperRaro
+        return positionSuperRaro, positionLegend
     except IndexError:
         try:
-            positionLegend = findClickPositions('images/legend.jpg', 'screenShot.jpg', threshold=0.8, debug_mode='points')
+            positionLegend = findClickPositions('images/legend.jpg', 'images/telaPersonagensPrimeiraParte.jpg', threshold=0.8, debug_mode='points')
 
-            return positionLegend[-1]
+            return positionLegend
         except IndexError:
-            positionSuperRaro = findClickPositions('images/superaro.jpg', 'screenShot.jpg', threshold=0.8, debug_mode='points')
+            positionSuperRaro = findClickPositions('images/superaro.jpg', 'images/telaPersonagensSegundaParte.jpg', threshold=0.8, debug_mode='points')
 
-            return positionSuperRaro[-1]
+            return positionSuperRaro
 
 
 # Qualquer tela.
@@ -130,3 +128,21 @@ def positionErroOverloaded():
     positionErro = findClickPositions('images/overloaded.jpg', 'screenShot.jpg', debug_mode='points')
 
     return positionErro[0]
+
+
+# Tela de login.
+def positionErroCore():
+    # Retorna a posição da palavra "Failed".
+    positionErro = findClickPositions('images/failed.jpg', 'screenShot.jpg', threshold=0.7, debug_mode='points')
+
+    return positionErro[0]
+
+
+# .
+def positionTste():
+    # Retorna a posição da palavra "Unknown".
+    positionErro = findClickPositions('images/4131.jpg', 'images/telaPersonagensSupeRaros.jpg', threshold=0.9, debug_mode='points')
+
+    return positionErro[0]
+
+#positionButtonBack()
