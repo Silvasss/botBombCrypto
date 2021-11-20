@@ -1,10 +1,11 @@
+import time
+
 import pyautogui
 
-import positionsObjectsScreen as objectsScreen
 import clickScreen as click
+import positionsObjectsScreen as objectsScreen
 from printScreen import printScreem
 
-import time
 
 # Funções que manipula os comandos até chega na tela personagens. Sendo utilizado como auxilio para função
 # "screenCharacterSuperRaroLegend()".
@@ -31,6 +32,8 @@ def screenRound():
 
 # Manipulação da tela home
 def screenHome():
+    printScreem()
+
     try:
         printScreem()
 
@@ -70,7 +73,6 @@ def backScreenRound():
 
         # Posição do botão "Treasure Hunt", na tela inicial.
         x, y = objectsScreen.positionButtonHunt()
-        #print("Posição do botão incial: {}, {}".format(x, y))
 
         # Move o mouse para a posição do botão "Treasure Hunt", na tela inicial.
         click.moveMouse(x, y)
@@ -103,9 +105,6 @@ def screenCharacterVersion2():
             # Pegando só a primeira lista
             listaBonecosEspeciais = listaBonecosEspeciais[0]
 
-            # Retirando o terceiro item.
-            listaBonecosEspeciais.pop(2)
-
             print("Encontrou ------------ SuperRaro ou Legend")
         else:
             print("Não encontrou ------------ SuperRaro ou Legend")
@@ -115,7 +114,7 @@ def screenCharacterVersion2():
         for i in listaBonecosEspeciais:
             if i:
                 # Posição da palavra "SuperRaro" ou "Legend".
-                tipoX, tipoY = i[0], i[1]
+                tipoX, tipoY = i[0][0], i[0][1]
 
                 # Move o mouse para o nome do tipo do boneco.
                 click.moveMouse(tipoX, tipoY)
@@ -132,14 +131,14 @@ def screenCharacterVersion2():
             if n > 1:
                 printScreem()
 
-                # Zera as posições da lista.
-                listaBonecosEspeciais = []
+                # Recebendo as posições da lista.
+                listaBonecosEspeciais = objectsScreen.positionTipoBonecoSuperRaroLegend()
 
-                # Adicionado as posições dos bonecos.
-                listaBonecosEspeciais.append(objectsScreen.positionTipoBonecoSuperRaroLegend())
+                # Recebendo a segunda posição do primeiro index.
+                listaBonecosEspeciais = listaBonecosEspeciais[0][1]
 
                 # Posição da palavra "SuperRaro" ou "Legend".
-                tipoX, tipoY = listaBonecosEspeciais[0][-1]
+                tipoX, tipoY = listaBonecosEspeciais
 
                 # Move o mouse para o nome do tipo do boneco.
                 click.moveMouse(tipoX, tipoY)
@@ -170,8 +169,10 @@ def screenCharacterVersion2():
                 # Adicionado as posições dos bonecos.
                 listaBonecosEspeciais = objectsScreen.positionTipoBonecoSuperRaroLegend()
 
+                listaBonecosEspeciais = listaBonecosEspeciais[0]
+
                 # Posição da palavra "SuperRaro" ou "Legend".
-                tipoX, tipoY = listaBonecosEspeciais
+                tipoX, tipoY = listaBonecosEspeciais[0][0], listaBonecosEspeciais[0][1]
 
                 # Move o mouse para o nome do tipo do boneco.
                 click.moveMouse(tipoX, tipoY)
@@ -184,7 +185,7 @@ def screenCharacterVersion2():
 
         # Manda o boneco para "House".
         click.mouseDragUpCharacterHouse()
-        
+
         if backScreenRound():
             print("Sucesso na função: backScreenRound")
             return True

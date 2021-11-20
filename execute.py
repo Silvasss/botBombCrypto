@@ -1,11 +1,12 @@
+import os
+import time
+
 import pyautogui
 
-from positionsObjectsScreen import sleepingQuantity
-import positionsObjectsScreen as objectsScreen
 import clickScreen as click
+import positionsObjectsScreen as objectsScreen
+from positionsObjectsScreen import sleepingQuantity
 from printScreen import printScreem
-
-import time
 
 
 # Função que coloca todos os personagens para trabalhar.
@@ -13,7 +14,7 @@ def execMain():
     printScreem()
 
     # Quantidade de bonecos dormindo.
-    if sleepingQuantity() >= 13:
+    if sleepingQuantity() >= 8:
 
         # Manipulação da tela round
         def screenRound():
@@ -35,6 +36,7 @@ def execMain():
 
         # Manipulação da tela home
         def screenHome():
+            printScreem()
             try:
                 printScreem()
 
@@ -86,7 +88,7 @@ def execMain():
         # Manipulação da tela dos personagens
         def screenCharacter():
             try:
-                time.sleep(2)
+                time.sleep(10)
 
                 printScreem()
 
@@ -117,17 +119,19 @@ def execMain():
                 print("screen round: True")
             else:
                 print("Função ScreenRound: False")
-                exit()
+                computerSleep()
+
             if screenHome():
                 print("ScreenHome: True")
             else:
                 print("Função ScreenHome: False")
-                exit()
+                computerSleep()
+
             if screenCharacter():
                 print("ScreenCharacter: True")
             else:
                 print("Função ScreenCharacter: False")
-                exit()
+                computerSleep()
 
         validacaoFuncoes()
     else:
@@ -151,7 +155,7 @@ def screenRoundNewMap():
         click.mouseLeftClick()
 
         return True
-    except:
+    except IndexError:
         pass
 
 
@@ -234,11 +238,6 @@ def loginFunction():
         # Clicar no botão "Treasure Hunt", na tela inicial.
         click.mouseLeftClick()
     except:
-        #try:
-            #screenErroCore()
-
-            #return True
-        #except:
         pass
 
 
@@ -262,7 +261,7 @@ def screenErroUnknown():
 
         return True
     else:
-        pass
+        return False
 
 
 def screenErroOverloaded():
@@ -278,7 +277,7 @@ def screenErroOverloaded():
 
         return True
     else:
-        pass
+        return False
 
 
 # Função que faz o login quando ocorre algum erro e o jogo fica parado na tela de login.
@@ -337,3 +336,9 @@ def loginFunction2():
 
     # Clicar no botão "Treasure Hunt", na tela inicial.
     click.mouseLeftClick()
+
+
+def computerSleep():
+    # Faz o computador entrar no modo hibernação.
+    os.system(r"shutdown /h")
+

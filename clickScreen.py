@@ -1,5 +1,7 @@
 import time
+
 import pyautogui
+
 
 # https://pyautogui.readthedocs.io/en/latest/mouse.html
 

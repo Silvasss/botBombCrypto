@@ -1,3 +1,5 @@
+import time
+
 from positionOnScreen import findClickPositions
 
 
@@ -26,7 +28,7 @@ def positionTextNewMap():
 # Tela home
 def positionButtonHeroes():
     # Retorna a posição do button "Heroes" da tela inicial.
-    positionHeroes = findClickPositions('images/boneco.jpg', 'screenShot.jpg', debug_mode='points')
+    positionHeroes = findClickPositions('images/boneco.jpg', 'screenShot.jpg', threshold=0.8, debug_mode='points')
 
     return positionHeroes[0]
 
@@ -34,7 +36,7 @@ def positionButtonHeroes():
 # Tela home
 def positionButtonHunt():
     # Retorna a posição do button "Treasure Hunt" da tela inicial.
-    positionHunt = findClickPositions('images/bauOuro.jpg', 'screenShot.jpg', debug_mode='points')
+    positionHunt = findClickPositions('images/bauOuro.jpg', 'screenShot.jpg', threshold=0.8, debug_mode='points')
 
     return positionHunt[0]
 
@@ -52,7 +54,7 @@ def positionTipoBoneco():
 # Tela personagens
 def positionButtonClose():
     # Retorna a posição do botão "close".
-    positionClose = findClickPositions('images/close.jpg', 'screenShot.jpg', debug_mode='points')
+    positionClose = findClickPositions('images/close.jpg', 'screenShot.jpg', threshold=0.8, debug_mode='points')
 
     return positionClose[0]
 
@@ -60,7 +62,7 @@ def positionButtonClose():
 # Tela round
 def positionErroUnknown():
     # Retorna a posição da palavra "Unknown".
-    positionErro = findClickPositions('images/okErro.jpg', 'screenShot.jpg', debug_mode='points')
+    positionErro = findClickPositions('images/okErro.jpg', 'screenShot.jpg', threshold=0.8, debug_mode='points')
 
     return positionErro[0]
 
@@ -68,7 +70,7 @@ def positionErroUnknown():
 # Tela round
 def positionOkErro():
     # Retorna a posição do botão "Ok".
-    positionErro = findClickPositions('images/unknown.jpg', 'screenShot.jpg', debug_mode='points')
+    positionErro = findClickPositions('images/unknown.jpg', 'screenShot.jpg', threshold=0.8, debug_mode='points')
 
     return positionErro[0]
 
@@ -105,27 +107,34 @@ def positionButtonWork():
 # Tela personagens
 def positionTipoBonecoSuperRaroLegend():
     try:
-        positionSuperRaro = findClickPositions('images/superaro.jpg', 'images/telaPersonagensPrimeiraParte.jpg', threshold=0.8,
+        positionSuperRaro = findClickPositions('images/superaro.jpg', 'screenShot.jpg', threshold=0.8,
                                                debug_mode='points')
 
-        positionLegend = findClickPositions('images/legend.jpg', 'images/telaPersonagensPrimeiraParte.jpg', threshold=0.8, debug_mode='points')
+        positionLegend = findClickPositions('images/legend.jpg', 'screenShot.jpg', threshold=0.8, debug_mode='points')
 
         return positionSuperRaro, positionLegend
-    except IndexError:
-        try:
-            positionLegend = findClickPositions('images/legend.jpg', 'images/telaPersonagensPrimeiraParte.jpg', threshold=0.8, debug_mode='points')
+    except:
+        pass
 
-            return positionLegend
-        except IndexError:
-            positionSuperRaro = findClickPositions('images/superaro.jpg', 'images/telaPersonagensSegundaParte.jpg', threshold=0.8, debug_mode='points')
+    try:
+        positionLegend = findClickPositions('images/legend.jpg', 'screenShot.jpg', threshold=0.8, debug_mode='points')
 
-            return positionSuperRaro
+        return positionLegend
+    except:
+        pass
+
+    try:
+        positionSuperRaro = findClickPositions('images/superaro.jpg', 'screenShot.jpg', threshold=0.8, debug_mode='points')
+
+        return positionSuperRaro
+    except:
+        pass
 
 
 # Qualquer tela.
 def positionErroOverloaded():
-    # Retorna a posição da palavra "Unknown".
-    positionErro = findClickPositions('images/overloaded.jpg', 'screenShot.jpg', debug_mode='points')
+    # Retorna a posição da palavra "Overloaded".
+    positionErro = findClickPositions('images/overloaded.jpg', 'screenShot.jpg', threshold=0.8, debug_mode='points')
 
     return positionErro[0]
 
@@ -138,11 +147,8 @@ def positionErroCore():
     return positionErro[0]
 
 
-# .
-def positionTste():
-    # Retorna a posição da palavra "Unknown".
-    positionErro = findClickPositions('images/4131.jpg', 'images/telaPersonagensSupeRaros.jpg', threshold=0.9, debug_mode='points')
+def checkScreenFarm():
+    # Retorna a posição do botão "Configuração" da tela farm.
+    positionButtonConfig = findClickPositions('images/botaoConfig.jpg', 'screenShot.jpg', debug_mode='points')
 
-    return positionErro[0]
-
-#positionButtonBack()
+    return positionButtonConfig[0]

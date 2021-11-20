@@ -1,13 +1,16 @@
-import pyautogui
-import execute, executeSuperRaroLegend
-import clickScreen as click
-from datetime import datetime, timedelta
 import time
+from datetime import datetime, timedelta
+
+import pyautogui
+
+import clickScreen as click
+import execute
+import executeSuperRaroLegend
+from positionsObjectsScreen import checkScreenFarm
 
 
 # Executar o script na tela do round.
 def main(home, minutosBonecos, minutosCasaBonecos, timeSleep):
-
 
     def verifyTimeFuture(casa):
 
@@ -38,44 +41,52 @@ def main(home, minutosBonecos, minutosCasaBonecos, timeSleep):
             print("Hora atual: {}".format(current_time))
 
             # Verifica se a hora atual e menor que o tempo para rodar o script.
-            if current_time == future_time:
+            if current_time >= future_time:
                 execute.execMain()
 
                 return True
             else:
                 # Verifica se a hora atual e igual a hora futura e a função "Home" e true.
-                if current_time == futureRaroLegend_time and casa:
+                if current_time >= futureRaroLegend_time and casa:
                     # Função que vai navegar até a tela "Character" e manipular os comandos necessários.
                     executeSuperRaroLegend.screenCharacterSuperRaroLegend()
 
                     casa = False
+
+                    if casa:
+                        print("Erro na função casa: {}".format(casa))
+                    else:
+                        print("Erro na função casa: {}".format(casa))
                 else:
+
+                    print("Pausa de {} minuto ---- Hora atual: {}".format(int(timeSleep/60), datetime.now().strftime('%H:%M:%S')))
+
+                    time.sleep(timeSleep)
+
                     try:
+                        # Verifica se está na tela do farm.
+                        # Sempre deve estar na tela do farm antes de verificar tudo.
+                        checkScreenFarm()
+
                         # Verifica se tem que mudar de mapa.
                         execute.screenRoundNewMap()
 
                         # Verifica se deu erro o "Unknown".
                         execute.screenErroUnknown()
 
-                        # Verifica se deu erro o "Overloaded".
-                        execute.screenErroOverloaded()
-
-                    except:
                         try:
-                            # Verifica se travo na tela de login.
-                            execute.loginFunction()
-                        except:
+                            # Verifica se deu erro o "Overloaded".
+                            execute.screenErroOverloaded()
+                        except False:
                             pass
+                    except IndexError:
+                        execute.computerSleep()
 
-                print("Pausa de {} minuto ---- Hora atual: {}".format(int(timeSleep/60), datetime.now().strftime('%H:%M:%S')))
-
-                time.sleep(timeSleep)
-
-                # Move o mouse, não AFK.
-                x, y = pyautogui.position()
-                pyautogui.moveTo(x - 20, y, 2)
-                click.mouseLeftClick()
-                pyautogui.moveTo(x + 10, y, 2)
+                    # Move o mouse, não AFK.
+                    x, y = pyautogui.position()
+                    pyautogui.moveTo(x - 20, y, 2)
+                    click.mouseLeftClick()
+                    pyautogui.moveTo(x + 10, y, 2)
 
     while True:
         print("Ciclo completo: {}".format(verifyTimeFuture(home)))
