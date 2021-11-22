@@ -1,6 +1,5 @@
-import time
-
 from positionOnScreen import findClickPositions
+from printScreen import printScreem
 
 
 # Tela do round
@@ -148,7 +147,24 @@ def positionErroCore():
 
 
 def checkScreenFarm():
-    # Retorna a posição do botão "Configuração" da tela farm.
-    positionButtonConfig = findClickPositions('images/botaoConfig.jpg', 'screenShot.jpg', debug_mode='points')
+    printScreem(0)
 
-    return positionButtonConfig[0]
+    try:
+        # Retorna a posição do botão "Configuração" da tela farm.
+        positionButtonConfig = findClickPositions('images/botaoConfig.jpg', 'screenShot.jpg', debug_mode='points')
+
+        return positionButtonConfig[0]
+    except IndexError:
+        return False
+
+
+def positionErroManual(screen):
+    printScreem(screen)
+
+    try:
+        # Retorna a posição do nome "Manual" na tela farm.
+        positionButtonConfig = findClickPositions('images/manual.jpg', 'screenShot.jpg', debug_mode='points')
+
+        return positionButtonConfig[0]
+    except IndexError:
+        return False

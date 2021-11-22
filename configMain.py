@@ -15,6 +15,9 @@ minutosCasaBonecos = 20
 # Valor em SEGUNDOS.
 timeSleep = 180
 
+# Função segunda tela.
+secondScreen = True
+
 
 if __name__ == '__main__':
-    main.main(home, minutosBonecos, minutosCasaBonecos, timeSleep)
+    main.main(home, minutosBonecos, minutosCasaBonecos, timeSleep, secondScreen)

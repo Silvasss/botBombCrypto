@@ -5,12 +5,13 @@ import pyautogui
 
 import clickScreen as click
 import execute
+import executeSecondScreen
 import executeSuperRaroLegend
 from positionsObjectsScreen import checkScreenFarm
 
 
 # Executar o script na tela do round.
-def main(home, minutosBonecos, minutosCasaBonecos, timeSleep):
+def main(home, minutosBonecos, minutosCasaBonecos, timeSleep, secondScreen):
 
     def verifyTimeFuture(casa):
 
@@ -44,6 +45,8 @@ def main(home, minutosBonecos, minutosCasaBonecos, timeSleep):
             if current_time >= future_time:
                 execute.execMain()
 
+                executeSecondScreen.execMain()
+
                 return True
             else:
                 # Verifica se a hora atual e igual a hora futura e a função "Home" e true.
@@ -63,30 +66,72 @@ def main(home, minutosBonecos, minutosCasaBonecos, timeSleep):
 
                     time.sleep(timeSleep)
 
+                    # Verifica se tem que mudar de mapa.
+                    execute.screenRoundNewMap()
+
+                    # Verifica se deu o erro "Unknown".
+                    execute.screenErroUnknown()
+
                     try:
-                        # Verifica se está na tela do farm.
-                        # Sempre deve estar na tela do farm antes de verificar tudo.
-                        checkScreenFarm()
+                        # Verifica se deu o erro "Overloaded".
+                        execute.screenErroOverloaded()
+                        print("execute.screenErroOverloaded()")
+                        time.sleep(10)
+                    except:
+                        pass
 
-                        # Verifica se tem que mudar de mapa.
-                        execute.screenRoundNewMap()
+                    try:
+                        # Verifica se deu o erro "Manual".
+                        execute.screenErroManual()
+                        print("execute.screenErroManual()")
+                        time.sleep(10)
+                    except:
+                        pass
 
-                        # Verifica se deu erro o "Unknown".
-                        execute.screenErroUnknown()
+                    # Verifica se está na tela do farm.
+                    # Sempre deve estar na tela do farm antes de verificar tudo.
+                    if checkScreenFarm():
 
-                        try:
-                            # Verifica se deu erro o "Overloaded".
-                            execute.screenErroOverloaded()
-                        except False:
-                            pass
-                    except IndexError:
+                        if secondScreen:
+                            # Verifica se tem que mudar de mapa.
+                            executeSecondScreen.screenRoundNewMap()
+
+                            # Verifica se deu erro o "Unknown".
+                            executeSecondScreen.screenErroUnknown()
+
+                            try:
+                                # Verifica se deu erro o "Overloaded".
+                                executeSecondScreen.screenErroOverloaded()
+                                print("execute.screenErroOverloaded2()")
+                                time.sleep(10)
+                            except:
+                                pass
+
+                            try:
+                                # Verifica se deu o erro "Manual".
+                                executeSecondScreen.screenErroManual()
+                                print("executeSecondScreen.screenErroManual()")
+
+                                time.sleep(10)
+                            except:
+                                pass
+
+                            # Move o mouse, não AFK.
+                            executeSecondScreen.notAfk()
+
+                        else:
+                            # Move o mouse, não AFK.
+                            x, y = pyautogui.position()
+                            pyautogui.moveTo(x - 20, y, 2)
+                            click.mouseLeftClick()
+                            pyautogui.moveTo(x + 10, y, 2)
+
+                    else:
                         execute.computerSleep()
 
-                    # Move o mouse, não AFK.
-                    x, y = pyautogui.position()
-                    pyautogui.moveTo(x - 20, y, 2)
-                    click.mouseLeftClick()
-                    pyautogui.moveTo(x + 10, y, 2)
+                        exit()
+
+                        pass
 
     while True:
         print("Ciclo completo: {}".format(verifyTimeFuture(home)))

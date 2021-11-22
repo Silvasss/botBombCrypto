@@ -1,8 +1,8 @@
-import os
 import time
 
 import pyautogui
 
+from execute import computerSleep
 import clickScreen as click
 import positionsObjectsScreen as objectsScreen
 from positionsObjectsScreen import sleepingQuantity
@@ -11,7 +11,7 @@ from printScreen import printScreem
 
 # Função que coloca todos os personagens para trabalhar.
 def execMain():
-    printScreem(0)
+    printScreem(2)
 
     # Quantidade de bonecos dormindo.
     if sleepingQuantity() >= 0:
@@ -19,13 +19,13 @@ def execMain():
         # Manipulação da tela round
         def screenRound():
             try:
-                printScreem(0)
+                printScreem(2)
 
                 # Posição do botão "volta"
                 x, y = objectsScreen.positionButtonBack()
 
                 # Move o cursos do mouse para o botão "volta".
-                click.moveMouse(x, y)
+                click.moveMouse(-abs(x) - 850, y)
 
                 # Clicar no botão "voltar".
                 click.mouseLeftClick()
@@ -36,16 +36,16 @@ def execMain():
 
         # Manipulação da tela home
         def screenHome():
-            printScreem(0)
+            printScreem(2)
             try:
-                printScreem(0)
+                printScreem(2)
 
                 # Posição do botão "Heroes".
                 x, y = objectsScreen.positionButtonHeroes()
 
                 time.sleep(1)
                 # Move o mouse para o botão "Heroes".
-                click.moveMouse(x, y)
+                click.moveMouse(-abs(x) + 840, y)
 
                 time.sleep(1)
                 # Clicar no botão "Heroes".
@@ -62,20 +62,20 @@ def execMain():
                 x, y = objectsScreen.positionButtonClose()
 
                 # Move o mouse para a posição do botão "Close", na tela personagens.
-                click.moveMouse(x, y)
+                click.moveMouse(-abs(x) + 140, y)
 
                 # Clicar no botão "Close", na tela personagens.
                 click.mouseLeftClick()
 
                 time.sleep(2)
 
-                printScreem(0)
+                printScreem(2)
 
                 # Posição do botão "Treasure Hunt", na tela inicial.
                 x, y = objectsScreen.positionButtonHunt()
 
                 # Move o mouse para a posição do botão "Treasure Hunt", na tela inicial.
-                click.moveMouse(x, y)
+                click.moveMouse(-abs(x) + 100, y)
 
                 # Clicar no botão "Treasure Hunt", na tela inicial.
                 click.mouseLeftClick()
@@ -89,13 +89,13 @@ def execMain():
             try:
                 time.sleep(10)
 
-                printScreem(0)
+                printScreem(2)
 
                 # Posição da palavra "Work".
                 x, y = objectsScreen.positionButtonWork()
 
                 # Move o mouse para o último boneco da primeira parte da lista.
-                click.moveMouse(x - 240, y + 10)
+                click.moveMouse(-abs(x) - 380, y + 15)
 
                 # Movimento de segurar e arrastar e posicionar o cursos em "work".
                 click.mouseDragCharacter()
@@ -142,13 +142,13 @@ def screenRoundNewMap():
     try:
         time.sleep(2)
 
-        printScreem(0)
+        printScreem(2)
 
         # Posição do texto "New Map".
         x, y = objectsScreen.positionTextNewMap()
 
         # Move o mouse para o botão "New Map".
-        click.moveMouse(x, y)
+        click.moveMouse(-abs(x), y)
 
         # Clica no botão
         click.mouseLeftClick()
@@ -160,7 +160,7 @@ def screenRoundNewMap():
 
 # Tela login.
 def screenErroCore():
-    printScreem(0)
+    printScreem(2)
 
     # Verifica se existe a palavra "Failed" na tela.
     if objectsScreen.positionErroCore():
@@ -183,13 +183,13 @@ def loginFunction():
         # Tempo para retorna a página inicial.
         time.sleep(30)
 
-        printScreem(0)
+        printScreem(2)
 
         # Posição da frase "Connect Wallet".
         x, y = objectsScreen.positionConnectWallet()
 
         # Move o mouse para a frase "Connect Wallet".
-        click.moveMouse(x, y)
+        click.moveMouse(-abs(x), y)
 
         # Clica no botão
         click.mouseLeftClick()
@@ -197,13 +197,13 @@ def loginFunction():
         # Tempo para carregar
         time.sleep(5)
 
-        printScreem(0)
+        printScreem(2)
 
         # Posição da palavra "MetaMask".
         x, y = objectsScreen.positionSelectWallet()
 
         # Move o mouse para a palavra "MetaMask".
-        click.moveMouse(x, y)
+        click.moveMouse(-abs(x), y)
 
         # Clica no botão
         click.mouseLeftClick()
@@ -211,13 +211,13 @@ def loginFunction():
         # Tempo para carregar
         time.sleep(5)
 
-        printScreem(0)
+        printScreem(2)
 
         # Posição da palavra "Sign".
         x, y = objectsScreen.positionConfirmSign()
 
         # Move o mouse para a palavra "Sign".
-        click.moveMouse(x, y)
+        click.moveMouse(-abs(x) + 1740, y)
 
         # Clica no botão
         click.mouseLeftClick()
@@ -225,14 +225,13 @@ def loginFunction():
         # Tempo para carregar
         time.sleep(80)
 
-        printScreem(0)
+        printScreem(2)
 
         # Posição do botão "Treasure Hunt", na tela inicial.
         x, y = objectsScreen.positionButtonHunt()
-        # print("Posição do botão incial: {}, {}".format(x, y))
 
         # Move o mouse para a posição do botão "Treasure Hunt", na tela inicial.
-        click.moveMouse(x, y)
+        click.moveMouse(-abs(x) + 100, y)
 
         # Clicar no botão "Treasure Hunt", na tela inicial.
         click.mouseLeftClick()
@@ -242,7 +241,7 @@ def loginFunction():
 
 # Função que verifica se existe o erro "Unknown", na tela round.
 def screenErroUnknown():
-    printScreem(0)
+    printScreem(2)
 
     try:
         # Verifica se existe a palavra "Unknown" na tela.
@@ -251,7 +250,7 @@ def screenErroUnknown():
         x, y = objectsScreen.positionOkErro()
 
         # Move o mouse para o botão "Ok".
-        click.moveMouse(x, y)
+        click.moveMouse(-abs(x), y)
 
         # Clica no botão
         click.mouseLeftClick()
@@ -265,10 +264,11 @@ def screenErroUnknown():
 
 
 def screenErroOverloaded():
-    printScreem(0)
+    printScreem(2)
 
-    # Verifica se existe a palavra "Overloaded" na tela.
-    if objectsScreen.positionErroOverloaded():
+    try:
+        # Verifica se existe a palavra "Overloaded" na tela.
+        objectsScreen.positionErroOverloaded()
         # Simula a tecla "F5".
         pyautogui.press("f5")
 
@@ -276,18 +276,18 @@ def screenErroOverloaded():
         loginFunction()
 
         return True
-    else:
+    except IndexError:
         return False
 
 
 def screenErroManual():
     # Verifica se existe a palavra "Manual" na tela.
-    if objectsScreen.positionErroManual(0):
+    if objectsScreen.positionErroManual(2):
         # Simula a tecla "F5".
         pyautogui.press("f5")
 
         # Função que faz o login.
-        loginFunction()
+        loginFunction2()
 
         return True
     else:
@@ -297,13 +297,13 @@ def screenErroManual():
 # Função que faz o login quando ocorre algum erro e o jogo fica parado na tela de login.
 def loginFunction2():
 
-    printScreem(0)
+    printScreem(2)
 
     # Posição da frase "Connect Wallet".
     x, y = objectsScreen.positionConnectWallet()
 
     # Move o mouse para a frase "Connect Wallet".
-    click.moveMouse(x, y)
+    click.moveMouse(-abs(x), y)
 
     # Clica no botão
     click.mouseLeftClick()
@@ -311,13 +311,13 @@ def loginFunction2():
     # Tempo para carregar
     time.sleep(5)
 
-    printScreem(0)
+    printScreem(2)
 
     # Posição da palavra "MetaMask".
     x, y = objectsScreen.positionSelectWallet()
 
     # Move o mouse para a palavra "MetaMask".
-    click.moveMouse(x, y)
+    click.moveMouse(-abs(x), y)
 
     # Clica no botão
     click.mouseLeftClick()
@@ -325,13 +325,13 @@ def loginFunction2():
     # Tempo para carregar
     time.sleep(5)
 
-    printScreem(0)
+    printScreem(2)
 
     # Posição da palavra "Sign".
     x, y = objectsScreen.positionConfirmSign()
 
     # Move o mouse para a palavra "Sign".
-    click.moveMouse(x, y)
+    click.moveMouse(-abs(x) + 1740, y)
 
     # Clica no botão
     click.mouseLeftClick()
@@ -339,20 +339,41 @@ def loginFunction2():
     # Tempo para carregar
     time.sleep(80)
 
-    printScreem(0)
+    printScreem(2)
 
     # Posição do botão "Treasure Hunt", na tela inicial.
     x, y = objectsScreen.positionButtonHunt()
     # print("Posição do botão incial: {}, {}".format(x, y))
 
     # Move o mouse para a posição do botão "Treasure Hunt", na tela inicial.
-    click.moveMouse(x, y)
+    click.moveMouse(-abs(x) + 100, y)
 
     # Clicar no botão "Treasure Hunt", na tela inicial.
     click.mouseLeftClick()
 
 
-def computerSleep():
-    # Faz o computador entrar no modo hibernação.
-    os.system(r"shutdown /h")
+def notAfk():
+    # Move o mouse para o meio da tela da principal.
+    click.moveMouse(964, 488)
+
+    # Posição do mouse
+    x, y = pyautogui.position()
+
+    pyautogui.moveTo(x - 20, y, 2)
+
+    click.mouseLeftClick()
+
+    pyautogui.moveTo(x + 10, y, 2)
+
+    # Move o mouse para o meio da tela da secundaria.
+    click.moveMouse(-964, 488)
+
+    # Posição do mouse
+    x, y = pyautogui.position()
+
+    pyautogui.moveTo(x - 20, y, 2)
+
+    click.mouseLeftClick()
+
+    pyautogui.moveTo(x + 10, y, 2)
 
