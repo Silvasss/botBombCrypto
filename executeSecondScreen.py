@@ -118,19 +118,16 @@ def execMain():
                 print("screen round: True")
             else:
                 print("Função ScreenRound: False")
-                computerSleep()
 
             if screenHome():
                 print("ScreenHome: True")
             else:
                 print("Função ScreenHome: False")
-                computerSleep()
 
             if screenCharacter():
                 print("ScreenCharacter: True")
             else:
                 print("Função ScreenCharacter: False")
-                computerSleep()
 
         validacaoFuncoes()
     else:

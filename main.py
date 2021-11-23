@@ -75,7 +75,7 @@ def main(home, minutosBonecos, minutosCasaBonecos, timeSleep, secondScreen):
                     try:
                         # Verifica se deu o erro "Overloaded".
                         execute.screenErroOverloaded()
-                        print("execute.screenErroOverloaded()")
+
                         time.sleep(10)
                     except:
                         pass
@@ -83,7 +83,7 @@ def main(home, minutosBonecos, minutosCasaBonecos, timeSleep, secondScreen):
                     try:
                         # Verifica se deu o erro "Manual".
                         execute.screenErroManual()
-                        print("execute.screenErroManual()")
+
                         time.sleep(10)
                     except:
                         pass
@@ -102,7 +102,7 @@ def main(home, minutosBonecos, minutosCasaBonecos, timeSleep, secondScreen):
                             try:
                                 # Verifica se deu erro o "Overloaded".
                                 executeSecondScreen.screenErroOverloaded()
-                                print("execute.screenErroOverloaded2()")
+
                                 time.sleep(10)
                             except:
                                 pass
@@ -110,7 +110,6 @@ def main(home, minutosBonecos, minutosCasaBonecos, timeSleep, secondScreen):
                             try:
                                 # Verifica se deu o erro "Manual".
                                 executeSecondScreen.screenErroManual()
-                                print("executeSecondScreen.screenErroManual()")
 
                                 time.sleep(10)
                             except:
@@ -127,11 +126,14 @@ def main(home, minutosBonecos, minutosCasaBonecos, timeSleep, secondScreen):
                             pyautogui.moveTo(x + 10, y, 2)
 
                     else:
+                        # Reproduz som de despertador.
+                        execute.soundErro()
+
+                        # Função dormir.
                         execute.computerSleep()
 
+                        # Finaliza o código.
                         exit()
-
-                        pass
 
     while True:
         print("Ciclo completo: {}".format(verifyTimeFuture(home)))

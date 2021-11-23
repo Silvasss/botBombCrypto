@@ -5,6 +5,8 @@ import positionsObjectsScreen
 import positionsObjectsScreen as objectsScreen
 import clickScreen as click
 from printScreen import printScreem
+from playsound import playsound
+playsound("sound/ClockSound.mp3")
 
 
 def mouseDragCharacter():
@@ -34,7 +36,7 @@ def mouseDragCharacter():
 
 time.sleep(2)
 
-#print(mouseDragCharacter())
+# print(mouseDragCharacter())
 """
 
 x, y = pyautogui.position()
@@ -47,9 +49,9 @@ pyautogui.dragRel(0, +800, 2)
 
 """
 
-#pyautogui.moveTo(891, 723)
+# pyautogui.moveTo(891, 723)
 
-#time.sleep(2)
+# time.sleep(2)
 """
 printScreem()
 
@@ -343,10 +345,9 @@ listaBonecosEspeciais = [[(675, 434), (675, 722), (659, 506)]]
 
 num = 0
 
-#print(listaBonecosEspeciais[0][num][0])
+# print(listaBonecosEspeciais[0][num][0])
 
 while num < 4:
-
     num += 1
     pass
 
@@ -399,7 +400,6 @@ def posicaoEspeciais(qtd1, qtd2):
             time.sleep(2)
             '''
 
-
         num += 1
 
     """
@@ -413,7 +413,7 @@ def posicaoEspeciais(qtd1, qtd2):
     """
 
 
-#posicaoEspeciais(3, 1)
+# posicaoEspeciais(3, 1)
 
 
 def screenCharacterVersion2():
@@ -514,12 +514,4 @@ def screenCharacterVersion2():
             click.mouseLeftClick()
 
 
-printScreem()
 
-x, y = positionsObjectsScreen.positionButtonWork()
-
-print(x)
-
-pyautogui.moveTo(-x, y)
-
-#pyautogui.moveTo(-1800, 1000)

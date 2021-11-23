@@ -4,9 +4,11 @@ import time
 import pyautogui
 
 import clickScreen as click
+
 import positionsObjectsScreen as objectsScreen
 from positionsObjectsScreen import sleepingQuantity
 from printScreen import printScreem
+from playsound import playsound
 
 
 # Função que coloca todos os personagens para trabalhar.
@@ -118,19 +120,16 @@ def execMain():
                 print("screen round: True")
             else:
                 print("Função ScreenRound: False")
-                computerSleep()
 
             if screenHome():
                 print("ScreenHome: True")
             else:
                 print("Função ScreenHome: False")
-                computerSleep()
 
             if screenCharacter():
                 print("ScreenCharacter: True")
             else:
                 print("Função ScreenCharacter: False")
-                computerSleep()
 
         validacaoFuncoes()
     else:
@@ -247,6 +246,7 @@ def screenErroUnknown():
     try:
         # Verifica se existe a palavra "Unknown" na tela.
         objectsScreen.positionErroUnknown()
+
         # Posição da palavra "Ok".
         x, y = objectsScreen.positionOkErro()
 
@@ -356,3 +356,10 @@ def computerSleep():
     # Faz o computador entrar no modo hibernação.
     os.system(r"shutdown /h")
 
+
+def soundErro():
+    playsound("sound/ClockSound.mp3")
+
+    playsound("sound/ClockSound.mp3")
+
+    playsound("sound/ClockSound.mp3")

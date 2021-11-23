@@ -30,6 +30,11 @@ Numpy.
 pip install numpy
 ```
 
+Pure Python, cross platform, single function module with no dependencies for playing sounds.
+```bash
+pip install playsound==1.2.2
+```
+
 # Cuidados na execução
 
 ```
