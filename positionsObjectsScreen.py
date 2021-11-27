@@ -50,10 +50,11 @@ def positionTipoBoneco():
 """
 # ----------------------------------------------------------------------------------------------
 
+
 # Tela personagens
 def positionButtonClose():
     # Retorna a posição do botão "close".
-    positionClose = findClickPositions('images/close.jpg', 'screenShot.jpg', threshold=0.8, debug_mode='points')
+    positionClose = findClickPositions('images/close.jpg', 'screenShot.jpg', debug_mode='points')
 
     return positionClose[0]
 
@@ -61,7 +62,7 @@ def positionButtonClose():
 # Tela round
 def positionErroUnknown():
     # Retorna a posição da palavra "Unknown".
-    positionErro = findClickPositions('images/okErro.jpg', 'screenShot.jpg', threshold=0.8, debug_mode='points')
+    positionErro = findClickPositions('images/unknown.jpg', 'screenShot.jpg', debug_mode='points')
 
     return positionErro[0]
 
@@ -69,7 +70,7 @@ def positionErroUnknown():
 # Tela round
 def positionOkErro():
     # Retorna a posição do botão "Ok".
-    positionErro = findClickPositions('images/unknown.jpg', 'screenShot.jpg', threshold=0.8, debug_mode='points')
+    positionErro = findClickPositions('images/okErro.jpg', 'screenShot.jpg', debug_mode='points')
 
     return positionErro[0]
 
@@ -133,7 +134,7 @@ def positionTipoBonecoSuperRaroLegend():
 # Qualquer tela.
 def positionErroOverloaded():
     # Retorna a posição da palavra "Overloaded".
-    positionErro = findClickPositions('images/overloaded.jpg', 'screenShot.jpg', threshold=0.8, debug_mode='points')
+    positionErro = findClickPositions('images/overloaded.jpg', 'screenShot.jpg', debug_mode='points')
 
     return positionErro[0]
 

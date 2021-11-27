@@ -66,25 +66,27 @@ def main(home, minutosBonecos, minutosCasaBonecos, timeSleep, secondScreen):
 
                     time.sleep(timeSleep)
 
-                    # Verifica se tem que mudar de mapa.
-                    execute.screenRoundNewMap()
+                    try:
+                        # Verifica se tem que mudar de mapa.
+                        execute.screenRoundNewMap()
+                    except:
+                        pass
 
-                    # Verifica se deu o erro "Unknown".
-                    execute.screenErroUnknown()
+                    try:
+                        # Verifica se deu o erro "Unknown".
+                        execute.screenErroUnknown()
+                    except:
+                        pass
 
                     try:
                         # Verifica se deu o erro "Overloaded".
                         execute.screenErroOverloaded()
-
-                        time.sleep(10)
                     except:
                         pass
 
                     try:
                         # Verifica se deu o erro "Manual".
                         execute.screenErroManual()
-
-                        time.sleep(10)
                     except:
                         pass
 
@@ -93,11 +95,17 @@ def main(home, minutosBonecos, minutosCasaBonecos, timeSleep, secondScreen):
                     if checkScreenFarm():
 
                         if secondScreen:
-                            # Verifica se tem que mudar de mapa.
-                            executeSecondScreen.screenRoundNewMap()
+                            try:
+                                # Verifica se tem que mudar de mapa.
+                                executeSecondScreen.screenRoundNewMap()
+                            except:
+                                pass
 
-                            # Verifica se deu erro o "Unknown".
-                            executeSecondScreen.screenErroUnknown()
+                            try:
+                                # Verifica se deu erro o "Unknown".
+                                executeSecondScreen.screenErroUnknown()
+                            except:
+                                pass
 
                             try:
                                 # Verifica se deu erro o "Overloaded".

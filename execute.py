@@ -157,145 +157,11 @@ def screenRoundNewMap():
         pass
 
 
-# Tela login.
-def screenErroCore():
-    printScreem(0)
-
-    # Verifica se existe a palavra "Failed" na tela.
-    if objectsScreen.positionErroCore():
-        # Simula a tecla "F5".
-        pyautogui.press("f5")
-
-        time.sleep(60)
-
-        # Função que faz o login.
-        loginFunction()
-
-        return True
-    else:
-        pass
-
-
 # Função que faz o login e vai para tela "round".
 def loginFunction():
-    try:
-        # Tempo para retorna a página inicial.
-        time.sleep(30)
 
-        printScreem(0)
-
-        # Posição da frase "Connect Wallet".
-        x, y = objectsScreen.positionConnectWallet()
-
-        # Move o mouse para a frase "Connect Wallet".
-        click.moveMouse(x, y)
-
-        # Clica no botão
-        click.mouseLeftClick()
-
-        # Tempo para carregar
-        time.sleep(5)
-
-        printScreem(0)
-
-        # Posição da palavra "MetaMask".
-        x, y = objectsScreen.positionSelectWallet()
-
-        # Move o mouse para a palavra "MetaMask".
-        click.moveMouse(x, y)
-
-        # Clica no botão
-        click.mouseLeftClick()
-
-        # Tempo para carregar
-        time.sleep(5)
-
-        printScreem(0)
-
-        # Posição da palavra "Sign".
-        x, y = objectsScreen.positionConfirmSign()
-
-        # Move o mouse para a palavra "Sign".
-        click.moveMouse(x, y)
-
-        # Clica no botão
-        click.mouseLeftClick()
-
-        # Tempo para carregar
-        time.sleep(80)
-
-        printScreem(0)
-
-        # Posição do botão "Treasure Hunt", na tela inicial.
-        x, y = objectsScreen.positionButtonHunt()
-        # print("Posição do botão incial: {}, {}".format(x, y))
-
-        # Move o mouse para a posição do botão "Treasure Hunt", na tela inicial.
-        click.moveMouse(x, y)
-
-        # Clicar no botão "Treasure Hunt", na tela inicial.
-        click.mouseLeftClick()
-    except:
-        pass
-
-
-# Função que verifica se existe o erro "Unknown", na tela round.
-def screenErroUnknown():
-    printScreem(0)
-
-    try:
-        # Verifica se existe a palavra "Unknown" na tela.
-        objectsScreen.positionErroUnknown()
-
-        # Posição da palavra "Ok".
-        x, y = objectsScreen.positionOkErro()
-
-        # Move o mouse para o botão "Ok".
-        click.moveMouse(x, y)
-
-        # Clica no botão
-        click.mouseLeftClick()
-
-        # Função que faz o login.
-        loginFunction()
-
-        return True
-    except IndexError:
-        return False
-
-
-def screenErroOverloaded():
-    printScreem(0)
-
-    # Verifica se existe a palavra "Overloaded" na tela.
-    if objectsScreen.positionErroOverloaded():
-        # Simula a tecla "F5".
-        pyautogui.press("f5")
-
-        # Função que faz o login.
-        loginFunction()
-
-        return True
-    else:
-        return False
-
-
-def screenErroManual():
-    # Verifica se existe a palavra "Manual" na tela.
-    if objectsScreen.positionErroManual(0):
-        # Simula a tecla "F5".
-        pyautogui.press("f5")
-
-        # Função que faz o login.
-        loginFunction()
-
-        return True
-    else:
-        return False
-
-
-# Função que faz o login quando ocorre algum erro e o jogo fica parado na tela de login.
-def loginFunction2():
+    # Tempo para retorna a página inicial.
+    time.sleep(30)
 
     printScreem(0)
 
@@ -337,7 +203,7 @@ def loginFunction2():
     click.mouseLeftClick()
 
     # Tempo para carregar
-    time.sleep(80)
+    time.sleep(60)
 
     printScreem(0)
 
@@ -350,6 +216,87 @@ def loginFunction2():
 
     # Clicar no botão "Treasure Hunt", na tela inicial.
     click.mouseLeftClick()
+
+
+# Tela login.
+def screenErroCore():
+    printScreem(0)
+
+    time.sleep(2)
+
+    # Verifica se existe a palavra "Failed" na tela.
+    if objectsScreen.positionErroCore():
+        # Simula a tecla "F5".
+        pyautogui.press("f5")
+
+        time.sleep(60)
+
+        # Função que faz o login.
+        loginFunction()
+
+        return True
+    else:
+        pass
+
+
+# Função que verifica se existe o erro "Unknown", na tela round.
+def screenErroUnknown():
+
+    time.sleep(2)
+
+    printScreem(0)
+
+    # Verifica se existe a palavra "Unknown" na tela.
+    objectsScreen.positionErroUnknown()
+
+    # Posição da palavra "Ok".
+    x, y = objectsScreen.positionOkErro()
+
+    # Move o mouse para o botão "Ok".
+    click.moveMouse(x, y)
+
+    # Clica no botão
+    click.mouseLeftClick()
+
+    # Função que faz o login.
+    loginFunction()
+
+
+def screenErroOverloaded():
+    printScreem(0)
+
+    time.sleep(2)
+
+    # Verifica se existe a palavra "Overloaded" na tela.
+    objectsScreen.positionErroOverloaded()
+
+    # Simula a tecla "F5".
+    pyautogui.press("f5")
+
+    # Função que faz o login.
+    loginFunction()
+
+
+def screenErroManual():
+    time.sleep(2)
+
+    # Verifica se existe a palavra "Manual" na tela.
+    if objectsScreen.positionErroManual(0):
+        # Posição da palavra "Ok".
+        x, y = objectsScreen.positionOkErro()
+
+        # Move o mouse para o botão "Ok".
+        click.moveMouse(x, y)
+
+        # Clica no botão
+        click.mouseLeftClick()
+
+        # Função que faz o login.
+        loginFunction()
+
+        return True
+    else:
+        return False
 
 
 def computerSleep():
