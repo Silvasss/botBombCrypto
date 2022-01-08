@@ -11,14 +11,14 @@ from positionsObjectsScreen import checkScreenFarm
 
 
 # Executar o script na tela do round.
-def main(home, minutosBonecos, minutosCasaBonecos, timeSleep, secondScreen):
+def main(home, minutosBonecos, minutosCasaBonecos, timeSleep, secondScreen, functionAll):
 
     def verifyTimeFuture(casa):
 
         # Calculo da hora atual mais os minutos que a função recebe.
         # Tempo que o código vai esperar carregar a energia dos bonecos para chamar o próximo passo.
         timeFuture = datetime.now() + timedelta(minutes=minutosBonecos)
-        # Formatando o hora futura
+        # Formatando a hora futura
         future_time = timeFuture.strftime('%H:%M')
 
         print("Hora que à energia dos bonecos vai tá full: {}".format(future_time))
@@ -43,13 +43,16 @@ def main(home, minutosBonecos, minutosCasaBonecos, timeSleep, secondScreen):
 
             # Verifica se a hora atual e menor que o tempo para rodar o script.
             if current_time >= future_time:
-                execute.execMain()
+                if functionAll:
+                    execute.execMain(True)
+                else:
+                    execute.execMain(False)
 
-                executeSecondScreen.execMain()
+                executeSecondScreen.execMain(functionAll)
 
                 return True
             else:
-                # Verifica se a hora atual e igual a hora futura e a função "Home" e true.
+                # Verifica se a hora atual e igual à hora futura e a função "Home" e true.
                 if current_time >= futureRaroLegend_time and casa:
                     # Função que vai navegar até a tela "Character" e manipular os comandos necessários.
                     executeSuperRaroLegend.screenCharacterSuperRaroLegend()
@@ -90,8 +93,14 @@ def main(home, minutosBonecos, minutosCasaBonecos, timeSleep, secondScreen):
                     except:
                         pass
 
+                    try:
+                        # Verifica se deu o erro "Unstable".
+                        execute.screenErroUnstable()
+                    except:
+                        pass
+
                     # Verifica se está na tela do farm.
-                    # Sempre deve estar na tela do farm antes de verificar tudo.
+                    # Sempre deve estar na tela do farm. Antes de verificar tudo.
                     if checkScreenFarm():
 
                         if secondScreen:
@@ -120,6 +129,12 @@ def main(home, minutosBonecos, minutosCasaBonecos, timeSleep, secondScreen):
                                 executeSecondScreen.screenErroManual()
 
                                 time.sleep(10)
+                            except:
+                                pass
+
+                            try:
+                                # Verifica se deu o erro "Unstable".
+                                executeSecondScreen.screenErroUnstable()
                             except:
                                 pass
 

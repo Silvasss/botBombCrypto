@@ -18,6 +18,8 @@ timeSleep = 180
 # Função segunda tela.
 secondScreen = True
 
+# Função que clica no botão "All" na tela dos personsagens.
+functionAll = True
 
 if __name__ == '__main__':
-    main.main(home, minutosBonecos, minutosCasaBonecos, timeSleep, secondScreen)
+    main.main(home, minutosBonecos, minutosCasaBonecos, timeSleep, secondScreen, functionAll)

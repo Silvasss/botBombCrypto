@@ -82,6 +82,3 @@ def findClickPositions(needle_img_path, haystack_img_path, threshold=0.5, debug_
 
     return points
 
-
-#points = findClickPositions('sono2.jpg', 'original2.jpg', debug_mode='points')
-#print(points)

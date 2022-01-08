@@ -10,7 +10,7 @@ from printScreen import printScreem
 
 
 # Função que coloca todos os personagens para trabalhar.
-def execMain():
+def execMain(functionAll):
     printScreem(2)
 
     # Quantidade de bonecos dormindo.
@@ -97,8 +97,12 @@ def execMain():
                 # Move o mouse para o último boneco da primeira parte da lista.
                 click.moveMouse(-abs(x) - 380, y + 15)
 
+                click.mouseLeftClick()
+
                 # Movimento de segurar e arrastar e posicionar o cursos em "work".
                 click.mouseDragCharacter()
+
+                click.mouseLeftClick()
 
                 time.sleep(2)
 
@@ -112,6 +116,29 @@ def execMain():
             except:
                 return False
 
+        # Manipulação da tela dos personagens
+        def screenCharacterAll():
+            try:
+                time.sleep(10)
+
+                printScreem(2)
+
+                # Posição da palavra "all".
+                x, y = objectsScreen.positionButtonAll()
+
+                # Move o mouse para o botão.
+                click.moveMouse(-abs(x) - 160, y)
+
+                # Clica no botão "all".
+                click.mouseRepeatClick(1)
+
+                if backScreenRound():
+                    return True
+                else:
+                    return False
+            except:
+                return False
+        screenCharacterAll()
         # Caso ele tente chama uma vez a função, e de erro e executada novamente.
         def validacaoFuncoes():
             if screenRound():
@@ -124,10 +151,16 @@ def execMain():
             else:
                 print("Função ScreenHome: False")
 
-            if screenCharacter():
-                print("ScreenCharacter: True")
+            if functionAll:
+                if screenCharacterAll():
+                    print("ScreenCharacterAll: True")
+                else:
+                    print("Função ScreenCharacterAll: False")
             else:
-                print("Função ScreenCharacter: False")
+                if screenCharacter():
+                    print("ScreenCharacter: True")
+                else:
+                    print("Função ScreenCharacter: False")
 
         validacaoFuncoes()
     else:
@@ -245,6 +278,25 @@ def screenErroUnknown():
 
     # Verifica se existe a palavra "Unknown" na tela.
     objectsScreen.positionErroUnknown()
+
+    # Posição da palavra "Ok".
+    x, y = objectsScreen.positionOkErro()
+
+    # Move o mouse para o botão "Ok".
+    click.moveMouse(-abs(x), y)
+
+    # Clica no botão
+    click.mouseLeftClick()
+
+    # Função que faz o login.
+    loginFunction2()
+
+
+# Função que verifica se existe o erro "Unstable", na tela.
+def screenErroUnstable():
+    time.sleep(2)
+
+    printScreem(2)
 
     # Posição da palavra "Ok".
     x, y = objectsScreen.positionOkErro()

@@ -5,7 +5,7 @@ from printScreen import printScreem
 # Tela do round
 def positionButtonBack():
     # Retorna a posição do button "volta", que fica na tela do mapa.
-    positionBack = findClickPositions('images/volta.jpg', 'screenShot.jpg', threshold=0.8, debug_mode='points')
+    positionBack = findClickPositions('images/volta.jpg', 'screenShot.jpg', threshold=0.6, debug_mode='points')
 
     return positionBack[0]
 
@@ -169,3 +169,16 @@ def positionErroManual(screen):
         return positionButtonConfig[0]
     except IndexError:
         return False
+
+
+# Tela personagens
+def positionButtonAll():
+
+    try:
+        # Retorna a posição do nome "all" na tela de personagens.
+        positionButtonAll = findClickPositions('images/all.jpg', 'screenShot.jpg', debug_mode='points')
+
+        return positionButtonAll[0]
+    except IndexError:
+        return False
+
