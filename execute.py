@@ -190,7 +190,7 @@ def screenRoundNewMap():
 def loginFunction():
 
     # Tempo para retorna a página inicial.
-    time.sleep(30)
+    time.sleep(3)
 
     printScreem(0)
 
@@ -206,8 +206,10 @@ def loginFunction():
     # Tempo para carregar
     time.sleep(5)
 
+    # Layout alterado
+    """
     printScreem(0)
-
+        
     # Posição da palavra "MetaMask".
     x, y = objectsScreen.positionSelectWallet()
 
@@ -219,6 +221,7 @@ def loginFunction():
 
     # Tempo para carregar
     time.sleep(5)
+    """
 
     printScreem(0)
 

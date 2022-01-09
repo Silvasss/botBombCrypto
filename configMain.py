@@ -13,10 +13,10 @@ minutosCasaBonecos = 20
 
 # Tempo de pausa, entre cada verificação da hora.
 # Valor em SEGUNDOS.
-timeSleep = 180
+timeSleep = 10
 
 # Função segunda tela.
-secondScreen = True
+secondScreen = False
 
 # Função que clica no botão "All" na tela dos personsagens.
 functionAll = True

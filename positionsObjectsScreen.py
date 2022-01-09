@@ -91,7 +91,7 @@ def positionSelectWallet():
 
 # Tela de login
 def positionConfirmSign():
-    positionSign = findClickPositions('images/signLogin.jpg', 'screenShot.jpg', debug_mode='points')
+    positionSign = findClickPositions('images/signLogin.jpg', 'screenShot.jpg', threshold=0.6, debug_mode='points')
 
     return positionSign[0]
 
