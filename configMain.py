@@ -5,7 +5,7 @@ import main
 home = False
 
 # Tempo para carregar a energia dos bonecos. Só número
-minutosBonecos = 60
+minutosBonecos = 20
 
 # Tempo para a função "Home" ativar.
 # Tempo que o código vai esperar os bonecos "SuperRaros" e "Legend" cansarem, para mandar eles para casa.

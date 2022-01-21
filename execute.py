@@ -206,23 +206,6 @@ def loginFunction():
     # Tempo para carregar
     time.sleep(5)
 
-    # Layout alterado
-    """
-        
-    printScreem(0)
-    # Posição da palavra "MetaMask".
-    x, y = objectsScreen.positionSelectWallet()
-
-    # Move o mouse para a palavra "MetaMask".
-    click.moveMouse(x, y)
-
-    # Clica no botão
-    click.mouseLeftClick()
-
-    # Tempo para carregar
-    time.sleep(5)
-    """
-
     printScreem(0)
 
     # Posição da palavra "Sign".
@@ -249,6 +232,8 @@ def loginFunction():
     # Clicar no botão "Treasure Hunt", na tela inicial.
     click.mouseLeftClick()
 
+    # Tempo para o código não dá erro.
+    time.sleep(5)
 
 # Tela login.
 def screenErroCore():

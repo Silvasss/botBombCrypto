@@ -69,35 +69,39 @@ def main(home, minutosBonecos, minutosCasaBonecos, timeSleep, secondScreen, func
 
                     time.sleep(timeSleep)
 
-                    try:
-                        # Verifica se tem que mudar de mapa.
-                        execute.screenRoundNewMap()
-                    except:
-                        pass
+                    def analiseTela():
+                        try:
+                            # Verifica se tem que mudar de mapa.
+                            execute.screenRoundNewMap()
+                        except:
+                            pass
 
-                    try:
-                        # Verifica se deu o erro "Unknown".
-                        execute.screenErroUnknown()
-                    except:
-                        pass
+                        try:
+                            # Verifica se deu o erro "Unknown".
+                            execute.screenErroUnknown()
+                        except:
+                            pass
 
-                    try:
-                        # Verifica se deu o erro "Overloaded".
-                        execute.screenErroOverloaded()
-                    except:
-                        pass
+                        try:
+                            # Verifica se deu o erro "Overloaded".
+                            execute.screenErroOverloaded()
+                        except:
+                            pass
 
-                    try:
-                        # Verifica se deu o erro "Manual".
-                        execute.screenErroManual()
-                    except:
-                        pass
+                        try:
+                            # Verifica se deu o erro "Manual".
+                            execute.screenErroManual()
+                        except:
+                            pass
 
-                    try:
-                        # Verifica se deu o erro "Unstable".
-                        execute.screenErroUnstable()
-                    except:
-                        pass
+                        try:
+                            # Verifica se deu o erro "Unstable".
+                            execute.screenErroUnstable()
+                        except:
+                            pass
+
+                    # Chama a função que analisa a tela principal.
+                    analiseTela()
 
                     # Verifica se está na tela do farm.
                     # Sempre deve estar na tela do farm. Antes de verificar tudo.
@@ -137,6 +141,9 @@ def main(home, minutosBonecos, minutosCasaBonecos, timeSleep, secondScreen, func
                                 executeSecondScreen.screenErroUnstable()
                             except:
                                 pass
+
+                            # Caso ocorra algum erro após analisar a segunda tela, verificar novamente a primeira.
+                            analiseTela()
 
                             # Move o mouse, não AFK.
                             executeSecondScreen.notAfk()
