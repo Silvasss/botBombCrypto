@@ -25,7 +25,7 @@ def execMain(functionAll):
                 x, y = objectsScreen.positionButtonBack()
 
                 # Move o cursos do mouse para o botão "volta".
-                click.moveMouse(-abs(x) - 850, y)
+                click.moveMouse(-abs(x) - 862, y)
 
                 # Clicar no botão "voltar".
                 click.mouseLeftClick()
@@ -45,7 +45,7 @@ def execMain(functionAll):
 
                 time.sleep(1)
                 # Move o mouse para o botão "Heroes".
-                click.moveMouse(-abs(x) + 840, y)
+                click.moveMouse(-abs(x) + 815, y)
 
                 time.sleep(1)
                 # Clicar no botão "Heroes".
@@ -62,7 +62,7 @@ def execMain(functionAll):
                 x, y = objectsScreen.positionButtonClose()
 
                 # Move o mouse para a posição do botão "Close", na tela personagens.
-                click.moveMouse(-abs(x) + 140, y)
+                click.moveMouse(-abs(x) + 100, y)
 
                 # Clicar no botão "Close", na tela personagens.
                 click.mouseLeftClick()
